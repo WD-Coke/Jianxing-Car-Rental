@@ -110,7 +110,6 @@
                     account:ev1,
                     password:ev2
                 }));
-                console.log(res)
                 if (res.data.status==='200'){
                     this.$message({
                         message:res.data.message,

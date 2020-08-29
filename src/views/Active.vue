@@ -76,11 +76,11 @@
                             </div>
                             <div class="list-item">
                                 <div class="item-top">
-                                    <img src="../assets/img/home4.jpg" alt="">
+                                    <img src="../assets/img/actived1.jpg" alt="" style="height: 171px">
                                     <div class="img-cover"></div>
                                 </div>
                                 <div class="item-bottom">
-                                    <h3>自主取还无接触指南</h3>
+                                    <h3>极致出行体验</h3>
                                     <p>安全出行，3步搞定</p>
                                     <p>
                                         <el-button type="warning" style="margin-top: 3%" size="mini">全国</el-button>
@@ -92,11 +92,11 @@
                             </div>
                             <div class="list-item">
                                 <div class="item-top">
-                                    <img src="../assets/img/home4.jpg" alt="">
+                                    <img src="../assets/img/active/a1.jpg" alt="">
                                     <div class="img-cover"></div>
                                 </div>
                                 <div class="item-bottom">
-                                    <h3>自主取还无接触指南</h3>
+                                    <h3>邀好友 瓜分百万现金</h3>
                                     <p>安全出行，3步搞定</p>
                                     <p>
                                         <el-button type="warning" style="margin-top: 3%" size="mini">全国</el-button>
@@ -108,11 +108,11 @@
                             </div>
                             <div class="list-item">
                                 <div class="item-top">
-                                    <img src="../assets/img/home4.jpg" alt="">
+                                    <img src="../assets/img/active/a2.jpg" alt="">
                                     <div class="img-cover"></div>
                                 </div>
                                 <div class="item-bottom">
-                                    <h3>自主取还无接触指南</h3>
+                                    <h3>五一租车 租5送5</h3>
                                     <p>安全出行，3步搞定</p>
                                     <p>
                                         <el-button type="warning" style="margin-top: 3%" size="mini">全国</el-button>
@@ -124,11 +124,11 @@
                             </div>
                             <div class="list-item">
                                 <div class="item-top">
-                                    <img src="../assets/img/home4.jpg" alt="">
+                                    <img src="../assets/img/active/a3.jpg" alt="">
                                     <div class="img-cover"></div>
                                 </div>
                                 <div class="item-bottom">
-                                    <h3>自主取还无接触指南</h3>
+                                    <h3>【无接触租车出行更安全】，先到先得！</h3>
                                     <p>安全出行，3步搞定</p>
                                     <p>
                                         <el-button type="warning" style="margin-top: 3%" size="mini">全国</el-button>
@@ -140,11 +140,11 @@
                             </div>
                             <div class="list-item">
                                 <div class="item-top">
-                                    <img src="../assets/img/home4.jpg" alt="">
+                                    <img src="../assets/img/active/a4.jpg" alt="">
                                     <div class="img-cover"></div>
                                 </div>
                                 <div class="item-bottom">
-                                    <h3>自主取还无接触指南</h3>
+                                    <h3>神州租车新用户专享：首日0元租！</h3>
                                     <p>安全出行，3步搞定</p>
                                     <p>
                                         <el-button type="warning" style="margin-top: 3%" size="mini">全国</el-button>
@@ -156,11 +156,11 @@
                             </div>
                             <div class="list-item">
                                 <div class="item-top">
-                                    <img src="../assets/img/home4.jpg" alt="">
+                                    <img src="../assets/img/active/a5.jpg" alt="">
                                     <div class="img-cover"></div>
                                 </div>
                                 <div class="item-bottom">
-                                    <h3>自主取还无接触指南</h3>
+                                    <h3>春节用神州租车，租7天送7天！</h3>
                                     <p>安全出行，3步搞定</p>
                                     <p>
                                         <el-button type="warning" style="margin-top: 3%" size="mini">全国</el-button>
@@ -172,11 +172,11 @@
                             </div>
                             <div class="list-item">
                                 <div class="item-top">
-                                    <img src="../assets/img/home4.jpg" alt="">
+                                    <img src="../assets/img/active/a6.jpg" alt="">
                                     <div class="img-cover"></div>
                                 </div>
                                 <div class="item-bottom">
-                                    <h3>自主取还无接触指南</h3>
+                                    <h3>环海自驾，领券惠玩海南</h3>
                                     <p>安全出行，3步搞定</p>
                                     <p>
                                         <el-button type="warning" style="margin-top: 3%" size="mini">全国</el-button>
@@ -188,11 +188,11 @@
                             </div>
                             <div class="list-item">
                                 <div class="item-top">
-                                    <img src="../assets/img/home4.jpg" alt="">
+                                    <img src="../assets/img/active/a7.jpg" alt="">
                                     <div class="img-cover"></div>
                                 </div>
                                 <div class="item-bottom">
-                                    <h3>自主取还无接触指南</h3>
+                                    <h3>租车初夏福利~最高减80</h3>
                                     <p>安全出行，3步搞定</p>
                                     <p>
                                         <el-button type="warning" style="margin-top: 3%" size="mini">全国</el-button>

@@ -51,6 +51,9 @@
                                 <el-table-column
                                         label="车辆"
                                         prop="pic">
+                                    <template slot-scope="scope">
+                                        <img :src="scope.row.pic" alt="" style="width: 80%;height: 80px">
+                                    </template>
                                 </el-table-column>
                                 <el-table-column
                                         label="价格"
@@ -73,7 +76,27 @@
                                         {{scope.row.conditon|forConditional}}
                                     </template>
                                 </el-table-column>
+                                <el-table-column
+                                        label="操作">
+                                    <template slot-scope="scope">
+                                            <el-button
+                                                    type="info"
+                                                    size="normal"
+                                                    icon="el-icon-delete"
+                                                    v-show="scope.row.conditon===0"
+                                                    @click="cancel(scope.row.orderid)">
+                                                取消
+                                            </el-button>
+                                    </template>
+                                </el-table-column>
                             </el-table>
+                            <el-dialog title="取消订单" :visible.sync="centerDialog" width="30%" center>
+                                <span>您确认要取消订单吗</span>
+                                <span slot="footer" class="dialog-footer">
+                                <el-button @click="centerDialog = false">取 消</el-button>
+                                <el-button type="primary" @click="cancelOrder">确 定</el-button>
+                                </span>
+                            </el-dialog>
                         </div>
                     </div>
                 </div>
@@ -89,6 +112,7 @@
 <script>
     import BottomContent from "../components/bottom-content/Bottom-content";
     import {formatDate} from "../common/formatDate"
+    import qs from "qs";
     export default {
         components: {
             BottomContent,
@@ -99,6 +123,8 @@
                 activeIndex:0,
                 tableData: [],
                 account: '',
+                orderid:'',
+                centerDialog:false
             }
         },
         filters: {
@@ -129,32 +155,10 @@
             addActive(index){
                 this.activeIndex=index
             },
-
-
-            //日期转换
-            // formatDate(fmt, date) {
-            //     let ret="";
-            //     date=new Date(date);
-            //     const opt = {
-            //         'Y+': date.getFullYear().toString(), // 年
-            //         'm+': (date.getMonth() + 1).toString(), // 月
-            //         'd+': date.getDate().toString(), // 日
-            //         'H+': date.getHours().toString(), // 时
-            //         'M+': date.getMinutes().toString(), // 分
-            //         'S+': date.getSeconds().toString() // 秒
-            //         // 有其他格式化字符需求可以继续添加，必须转化成字符串
-            //     }
-            //     for (let k in opt) {
-            //         ret = new RegExp('(' + k + ')').exec(fmt)
-            //         if (ret) {
-            //             fmt = fmt.replace(
-            //                 ret[1],
-            //                 ret[1].length === 1 ? opt[k] : opt[k].padStart(ret[1].length, '0')
-            //             )
-            //         }
-            //     }
-            //     return fmt
-            // },
+            cancel(ev){
+                this.centerDialog=true
+                this.orderid=ev;
+            },
 
             //请求数据
             async OrderDetails(){
@@ -162,6 +166,17 @@
                 const res=await this.$axios.get( '/order/getallorder',{params:{account:this.account}});
                 console.log(res)
                 this.tableData=res.data.data
+            },
+            async cancelOrder(){
+                const res=await  this.$axios.post('/order/cancelorder',qs.stringify({orderid:this.orderid}))
+                if (res.data.status === '201'){
+                    this.$message({
+                        message:res.data.message,
+                        type:'success'
+                    })
+                    this.centerDialog=false
+                    this.OrderDetails()
+                }
             }
         },
         created() {
@@ -239,10 +254,5 @@
         margin-right: 0;
         margin-bottom: 0;
         width: 50%;
-    }
-
-
-    .order-bottom{
-
     }
 </style>

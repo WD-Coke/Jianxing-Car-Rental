@@ -80,16 +80,39 @@
                 <el-form-item label="姓名">
                     <el-input
                             placeholder="请输入姓名"
-                            v-model="inputname"
+                            v-model="form.ownername"
                             clearable
                     ></el-input>
                 </el-form-item>
-                <el-form-item label="联系电话">
+                <el-form-item label="车辆品牌">
                     <el-input
-                            placeholder="请输入联系电话"
-                            v-model="inputphone"
+                            placeholder="请输入车辆品牌"
+                            v-model="form.cbrand"
                             clearable
                     ></el-input>
+                </el-form-item>
+                <el-form-item label="车辆类型">
+                    <el-input
+                            placeholder="请输入车辆类型"
+                            v-model="form.license"
+                            clearable
+                    ></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-upload
+                            multiple
+                            class="upload-demo"
+                            action="a"
+                            :file-list="fileList"
+                            list-type="picture"
+                            :auto-upload="false"
+                            ref="uploada"
+                            style="width: 100%">
+                        <el-button size="small" type="primary">点击上传</el-button>
+                        <div slot="tip" class="el-upload__tip">
+                            只能上传jpg/png文件，且不超过500kb
+                        </div>
+                    </el-upload>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -101,23 +124,26 @@
 </template>
 
 <script>
-    import qs from "qs";
+    // import qs from "qs";
     export default {
         name: "Storelist",
         data() {
             return {
+                labelPosition: 'right',
+                imgs: [],
+                fileList: [], //缓存区文件
+                formData: new FormData(),
                 clientFormVisible: false,
-                daynum: 1,
-                inputname: "",
-                inputphone: "",
+                form:{
+                    account:'',
+                    sid:'',
+                    ownername: "",
+                    cbrand:'',
+                    license:'',
+                },
                 storeDetails: {},
                 cars:[]
             };
-        },
-        computed: {
-            allprise: function() {
-                return this.daynum * this.carDetails.cprice;
-            }
         },
         created() {
             this.getStoreDetails(this.$route.params);
@@ -138,32 +164,33 @@
                 }
             },
 
-            // 预定房间****
+            // 成为车主
             async reservation() {
                 this.clientFormVisible = false;
-                const res = await this.$axios.post(
-                    "/createorder",
-                    qs.stringify({
-                        account: localStorage.getItem("account"),
-                        houseid: this.carDetails.houseid,
-                        price: this.carDetails.cprice,
-                        days: this.daynum,
-                        occupants: this.inputname,
-                        phonenum: this.inputphone
-                    }),
-                    {
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-                        } // 修正中文乱码
+                this.$refs.uploada.uploadFiles.forEach(ev => {
+                    this.formData.append("files", ev.raw);
+                });
+                // 把form表单的数据加入到FormData中
+                Object.keys(this.form).forEach(ele => {
+                    this.formData.append(ele, this.form[ele]);
+                });
+                console.log(this.formData);
+
+                const res = await this.$axios.post("/car/createcar", this.formData, {
+                    methods: "post",
+                    headers: {
+                        "Content-Type": "multipart/form-data"
                     }
-                );
-                const { status, message } = res.data;
-                if (status == 200) {
-                    this.$message({
-                        message: `${message}`,
-                        type: "success",
-                        duration: 1000
-                    });
+                });
+                console.log(res)
+                if (res.data.status === '201') {
+                    // 1.提示成功
+                    this.$message.success(res.data.message);
+                    // 3.清空文本框
+                    this.form = {};
+                    this.fileList=[];
+                } else {
+                    this.$message.warning(res.data.message);
                 }
             },
             //展示信息
@@ -177,6 +204,8 @@
                         duration: 1000
                     });
                     this.storeDetails = data;
+                    this.form.account=localStorage.getItem('account')
+                    this.form.sid=data.sid
                 }
             },
             async getCar(){

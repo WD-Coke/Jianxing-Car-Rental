@@ -48,31 +48,31 @@
           </div>
           <div class="room-list-new">
             <div>
-              <span>建筑面积：{{ carDetails.housearea }}cm²</span>
+              <span>品牌：{{ carDetails.cbrand }}</span>
             </div>
             <div>
               <span>车牌号：{{ carDetails.license }}</span>
             </div>
             <div>
-              <span>最短出租时间：{{ carDetails.housemin }}天</span>
+              <span>最短出租时间：{{ carDetails.minday }}</span>
             </div>
             <div>
-              <span>最长出租时间：{{ carDetails.housemax }}天</span>
+              <span>最长出租时间：{{ carDetails.maxday }}</span>
             </div>
             <div>
-              <span>房屋规模：{{ carDetails.houseroom }}</span>
+              <span>座椅：{{ carDetails.sets }}位</span>
+            </div>
+              <div>
+                  <span>油型：#{{ carDetails.power}}</span>
+              </div>
+              <div>
+                  <span>提前预定：2-4小时</span>
+              </div>
+            <div>
+              <span>邮箱容量：{{ carDetails.volume}}L</span>
             </div>
             <div>
-              <span>最大入住人数：{{ carDetails.houselimit }}人</span>
-            </div>
-            <div>
-              <span>退款日：{{ carDetails.houserefund }}</span>
-            </div>
-            <div>
-              <span>上次维护时间：{{ carDetails.housecreate | fmtdata }}</span>
-            </div>
-            <div>
-              <span>房屋地址：{{ carDetails.houseaddress }}</span>
+              <span>用车规则：{{ carDetails.roles }}</span>
             </div>
           </div>
           <el-button type="primary" class="btnroom" @click="client()">立 即 预 订</el-button>
@@ -121,9 +121,9 @@
         </div>
       </div>
     </div>
-    <!-- 入住人弹框 -->
+    <!-- 租车人弹框 -->
     <el-dialog
-      title="入住人信息"
+      title="租车人信息"
       :visible.sync="clientFormVisible"
       center
       width="450px"
@@ -143,10 +143,21 @@
             clearable
           ></el-input>
         </el-form-item>
+        <el-form-item label="身份证号">
+          <el-input
+                  placeholder="请输入身份证号"
+                  v-model="inputId"
+                  clearable
+          ></el-input>
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="clientFormVisible = false">取消</el-button>
-        <el-button type="primary" @click="reservation()">确 定</el-button>
+        <el-button
+                type="primary"
+                @click="reservation()"
+                :disabled="inputname===''||inputphone===''||inputId===''">
+          确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -161,6 +172,7 @@ export default {
       daynum: 1,
       inputname: "",
       inputphone: "",
+      inputId:'',
       carDetails: {},
       imgs: [],
     };
@@ -174,7 +186,7 @@ export default {
     this.getCarDetails(this.$route.params);
   },
   methods: {
-    // 入住验证
+    // 预定验证
     client() {
       let judge = localStorage.getItem("token");
       if (!judge) {
@@ -188,18 +200,20 @@ export default {
       }
     },
 
-    // 预定房间
+    // 预定车辆
     async reservation() {
       this.clientFormVisible = false;
-      const res = await this.$axios.post(
-        "/createorder",
+        console.log(localStorage.getItem('account'))
+      const res = await this.$axios.put(
+        "/order/createorder",
         qs.stringify({
           account: localStorage.getItem("account"),
-          houseid: this.carDetails.houseid,
-          price: this.carDetails.cprice,
+          cid: this.carDetails.cid,
+          price: this.carDetails.price,
           days: this.daynum,
-          occupants: this.inputname,
-          phonenum: this.inputphone
+          username: this.inputname,
+          cellphone: this.inputphone,
+          idnumber:this.inputId
         }),
         {
           headers: {
