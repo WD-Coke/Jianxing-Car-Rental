@@ -54,7 +54,16 @@
                 }else if(index===4){
                     this.$router.push('/Active')
                 }else if(index===5){
-                    this.$router.push('/Order')
+                        let judge = localStorage.getItem("token");
+                        if (!judge) {
+                            this.$message({
+                                message: "请先登录",
+                                type: "warning",
+                                duration: 1000
+                            });
+                        }else {
+                            this.$router.push('/Order')
+                        }
                 }else if (index===6){
                     this.$router.push('/Join')
                 }

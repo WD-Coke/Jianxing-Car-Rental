@@ -13,7 +13,7 @@
                                         placeholder="请输入您的邮箱"
                                         style="width: 50%"></el-input>
                             </el-form-item>
-                            <el-form-item>
+                            <el-form-item prop="telephone">
                                 <el-input
                                         v-model="form.telephone"
                                         prefix-icon="el-icon-mobile-phone"
@@ -29,7 +29,7 @@
                                 </el-input>
                                 <el-button type="primary" plain style="width: 20%" @click="getverification">发送验证码</el-button>
                             </el-form-item>
-                            <el-form-item class="inputBox">
+                            <el-form-item class="inputBox" prop="password">
                                 <el-input
                                         v-model="form.password"
                                         prefix-icon="el-icon-lock"
@@ -48,7 +48,14 @@
                         <div class="remember">
                             <el-checkbox v-model="checked">我已阅读并同意<a href="#">《简行租车会员服务条款》</a> </el-checkbox>
                         </div>
-                        <el-button type="primary" class="log-button" style="width: 50%" @click="UserRegistration">注册</el-button>
+                        <el-button
+                                type="primary"
+                                class="log-button"
+                                style="width: 50%"
+                                @click="UserRegistration"
+                                :disabled="form.email===''||form.telephone===''||form.number===''||form.password===''">
+                            注册
+                        </el-button>
                     </div>
                     <div class="right-content">
                         <div class="vip-title">已有账号?<router-link to="/Login"><a>立即登录》</a></router-link></div>

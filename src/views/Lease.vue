@@ -23,6 +23,7 @@
                         </el-form-item>
                         <el-form-item label="门店">
                             <el-select v-model="form.sid" placeholder="请选择门店" style="width: 100%">
+                                <el-option label="" value=""></el-option>
                                 <el-option :label="item.sname" :value="item.sid" v-for="item in store">{{item.sname}}</el-option>
                             </el-select>
                         </el-form-item>
@@ -67,6 +68,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="block">
+                    <el-pagination
+                            @current-change="handleCurrentChange"
+                            :current-page.sync="currentPage"
+                            :page-size="9"
+                            layout="prev, pager, next, jumper"
+                            :total="this.size"
+                    ></el-pagination>
+                </div>
             </div>
         </div>
         <BottomContent></BottomContent>
@@ -81,7 +91,7 @@
         data() {
             return {
                 form: {
-                    city:'',
+                    city:'遵义',
                     sid:'',
                     brand:'',
                     date1:'',
@@ -90,13 +100,26 @@
                 citys:['遵义','重庆','广州','上海','北京','天津','深圳','杭州','成都','长沙','大连','三亚','济南','武汉','西安'],
                 store:[],
                 brand:['保时捷','宝马','奥迪','福特','比亚迪','帕萨特','路虎','捷豹','沃尔沃','奔驰','大众','玛莎拉蒂'],
-                cars:[]
+                cars:[],
+                currentPage: 1,
+                size:1
             }
+        },
+        created() {
+            this.getStore()
+            this.searchCar()
         },
         methods:{
             //方法函数
             getDetails(ev){
                 this.$router.push(`/Car/${ev.cid}`)
+            },
+            handleCurrentChange(ev) {
+                this.currentPage = ev;
+                this.searchCar({
+                    city:this.form.city,
+                    sid:this.form.sid,
+                });
             },
 
             //请求数据
@@ -113,6 +136,8 @@
                          }
                     });
                 this.cars=res.data.data.data
+                this.size = res.data.data.size
+                console.log(res)
             },
         }
     }
@@ -214,5 +239,8 @@
     }
     .car-item img:hover{
         box-shadow: #888888 0 0 20px;
+    }
+    .block{
+        text-align: center;
     }
 </style>

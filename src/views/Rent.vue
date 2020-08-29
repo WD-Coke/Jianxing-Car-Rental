@@ -86,7 +86,7 @@
             return{
                 newIndex:0,
                 citys:['遵义','重庆','成都','广州','深圳','北京','上海'],
-                city:'',
+                city:'遵义',
                 storeList:[],
                 options: [{
                     label: '热门城市',
@@ -139,6 +139,9 @@
                 }],
                 value: ''
             }
+        },
+        created() {
+            this.addActive(0)
         },
         methods:{
             getDetails(ev){
