@@ -33,7 +33,23 @@
                                 style="width: 40%">
                             <el-button size="small" type="primary">点击上传</el-button>
                             <div slot="tip" class="el-upload__tip">
-                                只能上传jpg/png文件，且不超过500kb
+                                请上传店铺照片/不得多于4张
+                            </div>
+                        </el-upload>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-upload
+                                multiple
+                                class="upload-demo"
+                                action="a"
+                                :file-list="fileList2"
+                                list-type="picture"
+                                :auto-upload="false"
+                                ref="uploada"
+                                style="width: 40%">
+                            <el-button size="small" type="primary">点击上传</el-button>
+                            <div slot="tip" class="el-upload__tip">
+                                请上传营业执照/该项将作为重点审核
                             </div>
                         </el-upload>
                     </el-form-item>
@@ -63,6 +79,7 @@
                 labelPosition: 'right',
                 imgs: [],
                 fileList: [], //缓存区文件
+                fileList2: [],
                 formData: new FormData(),
                 form: {
                     sname: '',
@@ -78,6 +95,9 @@
                 // 添加当前剩余图片文件
                 this.$refs.uploada.uploadFiles.forEach(ev => {
                     this.formData.append("photo", ev.raw);
+                });
+                this.$refs.uploada.uploadFiles.forEach(ev => {
+                    this.formData.append("zhizhao", ev.raw);
                 });
                 // 把form表单的数据加入到FormData中
                 Object.keys(this.form).forEach(ele => {
@@ -102,6 +122,7 @@
                 this.formData=new FormData()
                 this.form = {};
                 this.fileList=[];
+                this.fileList2=[];
             },
         }
     }

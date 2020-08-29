@@ -141,13 +141,13 @@
                     cbrand:'',
                     license:'',
                 },
-                storeDetails: {},
+                storeDetails:'',
                 cars:[]
             };
         },
         created() {
             this.getStoreDetails(this.$route.params);
-            this.getCar()
+            this.getCar(this.$route.params)
         },
         methods: {
             // 入住验证
@@ -206,13 +206,13 @@
                     this.storeDetails = data;
                     this.form.account=localStorage.getItem('account')
                     this.form.sid=data.sid
+                    console.log(this.storeDetails.sid)
                 }
             },
-            async getCar(){
+            async getCar(ev){
                 const res=await this.$axios.get('/search/car', {
                     params:{
-                        city:'',
-                        sid:this.storeDetails.sid,
+                        sid:ev.name,
                     }
                 });
                 this.cars=res.data.data.data
