@@ -274,6 +274,11 @@
         margin: 0 0 5% 2.5%;
         overflow: hidden;
     }
+    .item-top{
+        width: 100%;
+        height: 243px;
+        overflow: hidden;
+    }
     .item-bottom{
         padding-left: 5%;
         position: relative;

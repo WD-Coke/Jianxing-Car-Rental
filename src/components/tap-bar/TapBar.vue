@@ -24,25 +24,23 @@
 </template>
 
 <script>
-    import {eventBus} from "../../main";
-
     export default {
         name: "TapBar",
         data(){
             return{
                 tap:['首页','租车','我要出租','门店','活动','我的订单','加入我们'],
-                currentIndex:0,
+                currentIndex:'',
                 display:true,
                 showAccount:'',
             }
         },
         mounted() {
-            this.currentIndex=localStorage.getItem('index')
+                this.currentIndex=sessionStorage.getItem('index')
         },
         methods:{
             inShow(index){
-                localStorage.setItem("index",index)
-                this.currentIndex=localStorage.getItem('index')
+                sessionStorage.setItem("index",index)
+                this.currentIndex=sessionStorage.getItem('index')
                 if(index===0){
                     this.$router.push('/HomePage')
                 }else if(index===1){
@@ -69,7 +67,7 @@
                 }
             },
             invisble(){
-                localStorage.removeItem('index');
+                sessionStorage.removeItem('index');
                 this.currentIndex=99;
             },
             clear(){

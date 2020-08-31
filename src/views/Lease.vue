@@ -61,9 +61,9 @@
                         </div>
                         <div class="item-bottom">
                             <h3>{{item.cname}}</h3>
-                            <p>781 2.0T</p>
+                            <p>{{item.license}}</p>
                             <p>安全出行，3步搞定</p>
-                            <p style="color: #ff4d3b">908元/天</p>
+                            <p style="color: #ff4d3b">{{item.cprice}}元/天</p>
                             <el-button type="primary" class="part" @click="getDetails(item)">查看详情</el-button>
                         </div>
                     </div>

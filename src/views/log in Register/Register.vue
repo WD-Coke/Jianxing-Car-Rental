@@ -56,6 +56,13 @@
                                 :disabled="form.email===''||form.telephone===''||form.number===''||form.password===''">
                             注册
                         </el-button>
+                        <el-button
+                                type="warning"
+                                class="log-button"
+                                style="width: 50%"
+                                @click="verification">
+                            实名认证
+                        </el-button>
                         <!--实名认证弹框-->
                         <el-dialog
                                 title="实名认证"
@@ -185,6 +192,9 @@
                     this.strength3=0
                 }
             },
+            verification(){
+                this.clientFormVisible=true
+            },
 
             //请求数据
             async getverification(){
@@ -283,7 +293,7 @@
         margin-bottom: 3%;
     }
     .log-button{
-        margin-bottom: 10%;
+        margin:0 1% 4% 0;
     }
     .password-safe{
         width: 40%;

@@ -275,7 +275,8 @@
         visibility: hidden;
     }
     .roomall1 {
-        margin: 20px auto;
+        margin: auto;
+        padding-top:20px;
     }
     em {
         font-style: normal;
@@ -344,7 +345,7 @@
     }
     .roomall {
         width: 80%;
-        margin: 10px auto;
+        margin:auto;
     }
     .leftdiv {
         float: left;
