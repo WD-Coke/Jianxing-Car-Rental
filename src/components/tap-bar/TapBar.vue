@@ -147,7 +147,7 @@ export default {
   color: white;
   flex: 1;
   padding-left: 15%;
-  font-size: 1.4em;
+  font-size: 1.2rem;
   display: flex;
 }
 .right-content {
