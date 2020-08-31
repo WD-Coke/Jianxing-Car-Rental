@@ -18,18 +18,18 @@
                     <el-form ref="form" :model="form" label-width="60px">
                         <el-form-item label="城市">
                             <el-select v-model="form.city" placeholder="请选择城市" style="width: 100%">
-                                <el-option :label="item" :value="item" v-for="item in citys" @click.native="getStore">{{item}}</el-option>
+                                <el-option :label="item" :value="item" v-for="item in citys" :key="item" @click.native="getStore">{{item}}</el-option>
                             </el-select>
                         </el-form-item>
                         <el-form-item label="门店">
                             <el-select v-model="form.sid" placeholder="请选择门店" style="width: 100%">
                                 <el-option label="" value=""></el-option>
-                                <el-option :label="item.sname" :value="item.sid" v-for="item in store">{{item.sname}}</el-option>
+                                <el-option :label="item.sname" :value="item.sid" v-for="item in store" :key="item">{{item.sname}}</el-option>
                             </el-select>
                         </el-form-item>
                         <el-form-item label="车型">
                             <el-select v-model="form.brand" placeholder="请选择车型" style="width: 100%">
-                                <el-option :label="item" :value="item" v-for="item in brand">{{item}}</el-option>
+                                <el-option :label="item" :value="item" v-for="item in brand" :key="item">{{item}}</el-option>
                             </el-select>
                         </el-form-item>
                         <el-form-item label="租期">
@@ -55,7 +55,7 @@
                     <img src="../assets/img/car-title.png">
                 </div>
                 <div class="car-list">
-                    <div class="car-item" v-for="item in cars">
+                    <div class="car-item" v-for="item in cars" :key="item">
                         <div class="item-top">
                             <img :src="item.pic1" alt="">
                         </div>

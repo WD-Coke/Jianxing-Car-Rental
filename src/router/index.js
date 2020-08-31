@@ -18,71 +18,71 @@ import Storelist from "@/views/Storelist";
 
 Vue.use(VueRouter)
 
-  const routes = [
-    {
-      path: '',
-      redirect:'/HomePage',
-    },
-   {
-     path: '/HomePage',
-     component: HomePage
-   },
-    {
-      path: '/Lease',
-      component: Lease
-    },
-      {
-          path:'/Car/:name',
-          component: Car
-      },
-      {
-          path:'/Store/:name',
-          component: Storelist
-      },
-    {
-      path: '/Rent',
-      component: Rent
-    },
-    {
-      path: '/Store',
-      component: Store
-    },
-    {
-      path: '/Active',
-      component: Active,
-    },
-      {
-          path: '/driving',
-          component: driving
-      },
-      {
-          path: '/ski',
-          component: ski
-      },
-      {
-          path: '/free',
-          component: free
-      },
-      {
-          path: '/self',
-          component: self
-      },
-    {
-      path: '/Order',
-      component: Order,
-    },
-    {
-       path: '/Join',
-       component: Join
-    },
-    {
-      path: '/Login',
-      component: Login
-    },
-    {
-      path: '/Register',
-      component: Register
-    },
+const routes = [
+  {
+    path: '',
+    redirect: '/HomePage',
+  },
+  {
+    path: '/HomePage',
+    component: HomePage
+  },
+  {
+    path: '/Lease',
+    component: Lease
+  },
+  {
+    path: '/Car/:name',
+    component: Car
+  },
+  {
+    path: '/Store/:name',
+    component: Storelist
+  },
+  {
+    path: '/Rent',
+    component: Rent
+  },
+  {
+    path: '/Store',
+    component: Store
+  },
+  {
+    path: '/Active',
+    component: Active,
+  },
+  {
+    path: '/driving',
+    component: driving
+  },
+  {
+    path: '/ski',
+    component: ski
+  },
+  {
+    path: '/free',
+    component: free
+  },
+  {
+    path: '/self',
+    component: self
+  },
+  {
+    path: '/Order',
+    component: Order,
+  },
+  {
+    path: '/Join',
+    component: Join
+  },
+  {
+    path: '/Login',
+    component: Login
+  },
+  {
+    path: '/Register',
+    component: Register
+  },
 ]
 
 const router = new VueRouter({

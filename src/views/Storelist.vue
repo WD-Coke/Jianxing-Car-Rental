@@ -54,7 +54,7 @@
             </el-divider>
             <div class="car-show">
                 <div class="car-list">
-                    <div class="car-item" v-for="item in cars">
+                    <div class="car-item" v-for="item in cars" :key="item">
                         <div class="item-top">
                             <img :src="item.pic1" alt="">
                         </div>

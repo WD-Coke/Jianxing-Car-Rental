@@ -31,7 +31,7 @@
                 <h3 class="show-title">支持全国主流城市，任意地点随你挑选</h3>
                 <div class="city-select">
                     <div class="city-box"><span>城市</span></div>
-                    <div class="city-item" v-for="(item,index) in citys" @click="addActive(index)" :class="{active:index===newIndex}">{{item}}</div>
+                    <div class="city-item" v-for="(item,index) in citys" :key="index" @click="addActive(index)" :class="{active:index===newIndex}">{{item}}</div>
                     <div class="select-box">
                         <el-select
                                 v-model="value"
@@ -56,7 +56,7 @@
                 </div>
                 <!--  店铺列表-->
                 <div class="store-list">
-                    <div class="store-item" v-for="item in storeList">
+                    <div class="store-item" v-for="item in storeList" :key="item">
                         <div class="item-top">
                             <img :src="item.mainpic" alt="">
                         </div>

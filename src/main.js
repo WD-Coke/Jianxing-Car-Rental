@@ -14,6 +14,7 @@ Vue.filter("fmtdata", v => {
   return moment(v).format("YYYY-MM-DD");
 });
 
+
 Vue.config.productionTip = false;
 export const eventBus = new Vue()
 

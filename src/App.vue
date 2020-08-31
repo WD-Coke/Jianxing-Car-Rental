@@ -18,7 +18,7 @@
 body{
   margin: 0;
   padding: 0;
-  font-size: 62.5%;
+  /* font-size: 0.9rem; */
 }
   a{
     text-decoration: none;

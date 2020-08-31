@@ -7,7 +7,7 @@
                     <div class="positioning">
                         <h3>我的订单</h3>
                         <ul class="order-select-table">
-                            <li v-for="(item,index) in orderTable" :class="[index===activeIndex?'active':'normalActive']" @click="addActive(index)">{{item}}</li>
+                            <li v-for="(item,index) in orderTable" :key="index" :class="[index===activeIndex?'active':'normalActive']" @click="addActive(index)">{{item}}</li>
                         </ul>
                         <!-- 表格数据-->
                         <div class="order-table">
