@@ -315,7 +315,8 @@ export default {
   visibility: hidden;
 }
 .roomall1 {
-  margin: 20px auto;
+  margin: auto;
+  padding-top: 20px;
 }
 em {
   font-style: normal;
@@ -384,7 +385,7 @@ em {
 }
 .roomall {
   width: 80%;
-  margin: 10px auto;
+  margin: auto;
 }
 .big-img {
   width: 100%;

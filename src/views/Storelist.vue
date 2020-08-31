@@ -94,10 +94,11 @@
                 <el-form-item label="车辆类型">
                     <el-input
                             placeholder="请输入车辆类型"
-                            v-model="form.license"
+                            v-model="form.cname"
                             clearable
                     ></el-input>
                 </el-form-item>
+                <!--上传车辆图片-->
                 <el-form-item>
                     <el-upload
                             multiple
@@ -139,7 +140,7 @@
                     sid:'',
                     ownername: "",
                     cbrand:'',
-                    license:'',
+                    cname:'',
                 },
                 storeDetails:'',
                 cars:[]
@@ -153,15 +154,26 @@
             // 入住验证
             client() {
                 let judge = localStorage.getItem("token");
+                let real=localStorage.getItem('real');
                 if (!judge) {
                     this.$message({
                         message: "请先登录",
                         type: "warning",
                         duration: 1000
                     });
+                } else if (real!=='true'){
+                    this.$message({
+                        message: "请进行实名认证",
+                        type: "warning",
+                        duration: 1000
+                    });
                 } else {
                     this.clientFormVisible = true;
+                    console.log(real)
                 }
+            },
+            getDetails(ev){
+                this.$router.push(`/Car/${ev.cid}`)
             },
 
             // 成为车主
@@ -186,12 +198,13 @@
                 if (res.data.status === '201') {
                     // 1.提示成功
                     this.$message.success(res.data.message);
-                    // 3.清空文本框
-                    this.form = {};
-                    this.fileList=[];
+
                 } else {
                     this.$message.warning(res.data.message);
                 }
+                this.formData=new FormData()
+                this.form = {};
+                this.fileList=[];
             },
             //展示信息
             async getStoreDetails(ev) {
@@ -262,7 +275,8 @@
         visibility: hidden;
     }
     .roomall1 {
-        margin: 20px auto;
+        margin: auto;
+        padding-top:20px;
     }
     em {
         font-style: normal;
@@ -331,7 +345,7 @@
     }
     .roomall {
         width: 80%;
-        margin: 10px auto;
+        margin:auto;
     }
     .leftdiv {
         float: left;

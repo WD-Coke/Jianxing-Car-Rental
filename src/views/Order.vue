@@ -77,16 +77,16 @@
                                     </template>
                                 </el-table-column>
                                 <el-table-column
-                                        label="操作">
+                                        label="操作" v-if="activeIndex===0||activeIndex===1">
                                     <template slot-scope="scope">
-                                            <el-button
-                                                    type="info"
-                                                    size="normal"
-                                                    icon="el-icon-delete"
-                                                    v-show="scope.row.conditon===0"
-                                                    @click="cancel(scope.row.orderid)">
-                                                取消
-                                            </el-button>
+                                        <el-button
+                                                type="info"
+                                                size="normal"
+                                                icon="el-icon-delete"
+                                                v-show="scope.row.conditon===0"
+                                                @click="cancel(scope.row.orderid)">
+                                            取消
+                                        </el-button>
                                     </template>
                                 </el-table-column>
                             </el-table>
@@ -124,7 +124,7 @@
                 tableData: [],
                 account: '',
                 orderid:'',
-                centerDialog:false
+                centerDialog:false,
             }
         },
         filters: {
@@ -152,8 +152,16 @@
             },
         },
         methods:{
-            addActive(index){
-                this.activeIndex=index
+            async addActive(index){
+                this.activeIndex=index;
+                this.account=localStorage.getItem('account')
+                const res=await this.$axios.get( '/order/getkindsorder',{params:
+                        {
+                            account:this.account,
+                            state:index-1
+                        }
+                });
+                this.tableData=res.data.data
             },
             cancel(ev){
                 this.centerDialog=true
