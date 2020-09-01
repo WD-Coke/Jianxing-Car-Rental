@@ -18,7 +18,7 @@
 body{
   margin: 0;
   padding: 0;
-  /* font-size: 0.9rem; */
+  /*font-size: 62.5%;*/
 }
   a{
     text-decoration: none;
@@ -30,4 +30,5 @@ body{
   li{
     list-style-type: none;
   }
+
 </style>

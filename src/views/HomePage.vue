@@ -479,11 +479,11 @@
         padding: 5% 0 5% 0;
     }
     .step-item-text h3{
-        font-size: 1.4em;
+        font-size: 14px;
         color: #303030;
     }
     .step-item-text span{
-        font-size: 1.4em;
+        font-size: 14px;
         color: #666;
         flex-wrap: wrap;
     }
@@ -522,7 +522,7 @@
         opacity: 1;
     }
     .service-item h3{
-        font-size: 1.8em;
+        font-size: 18px;
     }
     .view-detail img{
         width: 60%;
@@ -552,12 +552,12 @@
         flex: 1;
     }
     .frame-right h3{
-        font-size: 2.8em;
+        font-size: 32px;
         color: #303030;
         margin: 0 0 2% 0;
     }
     .frame-right i{
-        font-size: 1.4em;
+        font-size: 16px;
         color: #e1614a;
     }
     .detail-tag{
@@ -568,7 +568,7 @@
         border-radius: 4px
     }
     .detail-tag span{
-        font-size: 1em;
+        font-size: 12px;
         color: #ffffff;
     }
 
@@ -584,12 +584,12 @@
         margin:auto;
     }
     .life-content h1{
-        font-size: 3em;
+        font-size: 30px;
         color: #1b2939;
         text-align: center;
     }
     .life-content p{
-        font-size: 1.6em;
+        font-size: 16px;
         color: #71767a;
         text-align: center;
         margin-bottom: 5%;
@@ -617,7 +617,7 @@
     .participate{
         padding: 5% 0 5% 5%;
         text-align: center;
-        font-size: 1.4em;
+        font-size: 14px;
         color: #60606c;
     }
     .participate:hover{
@@ -626,11 +626,11 @@
     }
 
     .item-bottom h3{
-        font-size: 1.6em;
+        font-size: 16px;
         color: #1b2939;
     }
     .item-bottom p{
-        font-size: 1.4em;
+        font-size: 14px;
         color: #939a9f;
         text-align: left;
     }

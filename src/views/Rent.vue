@@ -85,8 +85,8 @@
         data(){
             return{
                 newIndex:0,
-                citys:['遵义','重庆','成都','广州','深圳','北京','上海'],
-                city:'遵义',
+                citys:['重庆','遵义','成都','广州','深圳','北京','上海'],
+                city:'重庆',
                 storeList:[],
                 options: [{
                     label: '热门城市',
@@ -196,12 +196,12 @@
         width: 30%;
     }
     .explanation h4{
-        font-size: 1.8em;
+        font-size: 18px;
         color: #333;
         margin: 0;
     }
     .explanation p{
-        font-size: 1.4em;
+        font-size: 14px;
         color: #999;
     }
 
@@ -225,7 +225,7 @@
         margin: auto;
     }
     .show-title{
-        font-size: 2.4em;
+        font-size: 24px;
         color: #333;
         text-align: center;
         margin: 1% 0 3% 0;
@@ -241,14 +241,14 @@
     .city-box{
         width: 10%;
         text-align: center;
-        font-size: 1.3em;
+        font-size: 13px;
         background-color: #f1f1f1;
         border-left: 1px solid rgba(200,200,200,0.4);
     }
     .city-item{
         width: 10%;
         text-align: center;
-        font-size: 1.3em;
+        font-size: 13px;
     }
     .city-item:hover{
         color: #1890ff;
@@ -287,14 +287,14 @@
         width: 100%;
     }
     .item-bottom h3{
-        font-size: 1.6em;
+        font-size: 16px;
         color: #1b2939;
     }
     .item-bottom h3:hover{
         color: #1890ff;
     }
     .item-bottom p{
-        font-size: 1.4em;
+        font-size: 14px;
         color: #939a9f;
     }
     .part{

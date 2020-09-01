@@ -143,11 +143,11 @@
     }
     .join-form h2{
         color: #333;
-        font-size: 2.6em;
+        font-size: 26px;
     }
     .join-form p{
         color: #999;
-        font-size: 1.4em;
+        font-size: 14px;
     }
     .upload-demo{
         margin: auto;

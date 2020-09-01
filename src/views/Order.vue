@@ -216,7 +216,7 @@
         padding: 1% 3% 3% 3%;
     }
     .order-list h3{
-        font-size: 1.8em;
+        font-size: 18px;
         color: rgba(0,0,0,.85);
     }
     .order-select-table{
@@ -225,7 +225,7 @@
     .order-select-table li{
         width: 8%;
         text-align: center;
-        font-size: 1.4em;
+        font-size: 14px;
         height: 35px;
         line-height: 35px;
     }
