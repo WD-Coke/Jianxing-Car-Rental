@@ -65,6 +65,7 @@ export default {
 
       for (let i = 0; i < this.lnglat.length; i++) {
         var _this = this;
+        console.log(_this.lnglat[i])
         var marker = new AMap.Marker({
           // 标点
           position: _this.lnglat[i],
@@ -130,7 +131,7 @@ export default {
 }
 .mapleft > div {
   /* height: 95px; */
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #bebebe;
   overflow: hidden;
   cursor: pointer;
   margin: 10px;
