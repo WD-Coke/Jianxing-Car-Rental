@@ -82,7 +82,7 @@ export default {
             '<br/>营业时间：' +
             _this.storelist[i].workdate +
             '<br/>'+
-            '<a href = "https://mobile.amap.com/">了解商家详情</a></div>';
+            '<a href="#/store/'+_this.storelist[i].sid+'">了解商家详情</a></div>';
           var infowindow = new AMap.AdvancedInfoWindow({
             content: this.content,
             closeWhenClickMap: true,
