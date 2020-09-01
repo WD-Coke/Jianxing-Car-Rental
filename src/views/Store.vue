@@ -131,7 +131,7 @@ export default {
 }
 .mapleft > div {
   /* height: 95px; */
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #bebebe;
   overflow: hidden;
   cursor: pointer;
   margin: 10px;
