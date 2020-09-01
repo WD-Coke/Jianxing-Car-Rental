@@ -190,9 +190,16 @@ export default {
     // 预定验证
     client() {
       let judge = localStorage.getItem("token");
+      let real=localStorage.getItem('real');
       if (!judge) {
         this.$message({
           message: "请先登录",
+          type: "warning",
+          duration: 1000
+        });
+      } else if (real!=='true'){
+        this.$message({
+          message: "请进行实名认证",
           type: "warning",
           duration: 1000
         });
@@ -265,151 +272,150 @@ export default {
 </script>
 
 <style scoped>
-/*
-.bcimg {
-  background: url(../assets/5.png) no-repeat center center fixed;
-}
- */
-.bcimg{
-  background-color: #f1f1f1;
-}
-.easyfont span {
-  font-weight: 700;
-  font-size: 24px;
-}
+  /*
+  .bcimg {
+    background: url(../assets/5.png) no-repeat center center fixed;
+  }
+   */
+  .bcimg{
+    background-color: #f1f1f1;
+  }
+  .easyfont span {
+    font-weight: 700;
+    font-size: 24px;
+  }
 
-.danke-promise {
-  width: 1190px;
-  margin: 10px auto;
-}
-.danke-promise-content {
-  display: flex;
-  background-color: #fff;
-  width: 100%;
-  border-radius: 5px;
-  box-shadow: 0 0 10px 3px rgba(231, 231, 231, 0.5);
-  padding: 30px 0;
-  margin-top: 30px;
-  justify-content: space-around;
-}
-.danke-promise-item {
-  width: 16.3%;
-  text-align: center;
-  display: inline-block;
-}
+  .danke-promise {
+    width: 1190px;
+    margin: 10px auto;
+  }
+  .danke-promise-content {
+    display: flex;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 3px rgba(231, 231, 231, 0.5);
+    padding: 30px 0;
+    margin-top: 30px;
+    justify-content: space-around;
+  }
+  .danke-promise-item {
+    width: 16.3%;
+    text-align: center;
+    display: inline-block;
+  }
 
-.danke-promise-item p {
-  font-size: 16px;
-  color: #333;
-  text-align: center;
-  margin-top: 20px;
-}
+  .danke-promise-item p {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+  }
 
-.btnroom {
-  width: 90%;
-  margin: 10px 0 30px 30px;
-}
-.roomall1:after {
-  content: "";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-.roomall1 {
-  margin: auto;
-  padding-top: 20px;
-}
-em {
-  font-style: normal;
-}
-.room-list-new div {
-  width: 40%;
-  float: left;
-  height: 40px;
-  margin-left: 20px;
-  word-break: break-all;
-}
-.room-list-new div:last-child {
-  width: 85%;
-}
-.room-list-new div span {
-  margin-right: 20px;
-  display: block;
-  font-weight: 400;
-  height: 40px;
-  color: #666;
-  font-size: 14px;
-  line-height: 40px;
-}
-.room-list-new {
-  width: 100%;
-  display: block;
-  padding-left: 40px;
-  margin-bottom: 40px;
-}
-.room-price-sale {
-  display: block;
-  margin: 0 ;
-}
-.room-price-sale {
-  color: #ff7966;
-  font-size: 32px;
-  line-height: 42px;
-  font-weight: 700;
-}
-.price-list label {
-  float: left;
-  width: 85px;
-  line-height: 42px;
-  font-size: 14px;
-  color: #999;
-  font-weight: 400;
-}
-.price-list {
-  padding-top: 20px;
-}
-.room-price {
-  overflow: hidden;
-  background: #f9f9fb;
-  padding: 0 25px 10px;
-  min-height: 100px;
-}
-.rightdiv {
-  margin-left: 0;
-  float: right;
-  width: 45%;
-  height: 100%;
-  font-size: 2em;
-}
-.rightdiv h1 {
-  margin-bottom: 20px;
-  margin-top: 0;
-}
-.roomall {
-  width: 80%;
-  margin: auto;
-}
-.big-img {
-  width: 100%;
-  margin: 0 auto;
-  height: 100%;
-}
-.img-list {
-  margin-top: 10px;
-}
-.img-list img {
-  height: 100%;
-  width: 20%;
-  margin: 0 5px;
-}
-.small-img {
-  width: 100%;
-  text-align: center;
-}
-.leftdiv {
-  float: left;
-  width: 50%;
-  height: 100%;
-}
+  .btnroom {
+    width: 90%;
+    margin: 10px 0 30px 30px;
+  }
+  .roomall1:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .roomall1 {
+    margin: auto;
+    padding-top: 20px;
+  }
+  em {
+    font-style: normal;
+  }
+  .room-list-new div {
+    width: 40%;
+    float: left;
+    height: 40px;
+    margin-left: 20px;
+    word-break: break-all;
+  }
+  .room-list-new div:last-child {
+    width: 85%;
+  }
+  .room-list-new div span {
+    margin-right: 20px;
+    display: block;
+    font-weight: 400;
+    height: 40px;
+    color: #666;
+    font-size: 14px;
+    line-height: 40px;
+  }
+  .room-list-new {
+    width: 100%;
+    display: block;
+    padding-left: 40px;
+    margin-bottom: 40px;
+  }
+  .room-price-sale {
+    display: block;
+    margin: 0 0 0 85px;
+  }
+  .room-price-sale {
+    color: #ff7966;
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: 700;
+  }
+  .price-list label {
+    float: left;
+    width: 85px;
+    line-height: 42px;
+    font-size: 14px;
+    color: #999;
+    font-weight: 400;
+  }
+  .price-list {
+    padding-top: 20px;
+  }
+  .room-price {
+    overflow: hidden;
+    background: #f9f9fb;
+    padding: 0 25px 10px;
+    min-height: 100px;
+  }
+  .rightdiv {
+    margin-left: 0;
+    float: right;
+    width: 45%;
+    height: 100%;
+    font-size: 2em;
+  }
+  .rightdiv h1 {
+    margin-bottom: 20px;
+  }
+  .roomall {
+    width: 80%;
+    margin: auto;
+  }
+  .big-img {
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+  }
+  .img-list {
+    margin-top: 10px;
+  }
+  .img-list img {
+    height: 100%;
+    width: 20%;
+    margin: 0 5px;
+  }
+  .small-img {
+    width: 100%;
+    text-align: center;
+  }
+  .leftdiv {
+    float: left;
+    width: 50%;
+    height: 100%;
+  }
 </style>

@@ -195,7 +195,7 @@
         width: 100%;
         height: 15%;
         display: flex;
-        font-size: 1.7em;
+        font-size: 17px;
         color: #8a8a8a;
         background-color: #f3f4f6;
         border-bottom: 1px solid rgba(200,200,200,0.5);
@@ -224,7 +224,7 @@
     }
     .remember a{
         color: deepskyblue;
-        font-size: 1.4em;
+        font-size: 14px;
         float: right;
     }
     .log-button{

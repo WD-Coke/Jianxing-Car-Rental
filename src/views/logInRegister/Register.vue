@@ -53,9 +53,59 @@
                                 class="log-button"
                                 style="width: 50%"
                                 @click="UserRegistration"
-                                :disabled="form.email===''||form.telephone===''||form.number===''||form.password===''">
+                                :disabled="form.email===''||form.telephone===''||form.number===''||form.password.length<6">
                             注册
                         </el-button>
+                        <el-button
+                                type="warning"
+                                class="log-button"
+                                style="width: 50%"
+                                @click="verification">
+                            实名认证
+                        </el-button>
+                        <!--实名认证弹框-->
+                        <el-dialog
+                                title="实名认证"
+                                :visible.sync="clientFormVisible"
+                                center
+                                width="450px"
+                        >
+                            <el-form label-width="80px">
+                                <el-form-item label="注册电话">
+                                    <el-input
+                                            placeholder="请输入注册电话"
+                                            v-model="AuthenticationForm.cellphone"
+                                            clearable
+                                    ></el-input>
+                                </el-form-item>
+                                <el-form-item>
+                                    <el-upload
+                                            multiple
+                                            class="upload-demo"
+                                            action="a"
+                                            :file-list="fileList"
+                                            list-type="picture-card"
+                                            :auto-upload="false"
+                                            ref="uploada"
+                                            style="width: 100%">
+                                        <i class="el-icon-plus"></i>
+                                        <div slot="tip" class="el-upload__tip">
+                                            只能上传jpg/png文件，且不超过500kb
+                                        </div>
+                                    </el-upload>
+                                    <el-dialog :visible.sync="dialogVisible">
+                                        <img width="100%" :src="dialogImageUrl" alt="">
+                                    </el-dialog>
+                                </el-form-item>
+                            </el-form>
+                            <div slot="footer" class="dialog-footer">
+                                <el-button @click="clientFormVisible = false">取消</el-button>
+                                <el-button
+                                        type="primary"
+                                        @click="reservation()">
+                                    确 定</el-button>
+                            </div>
+                        </el-dialog>
                     </div>
                     <div class="right-content">
                         <div class="vip-title">已有账号?<router-link to="/Login"><a>立即登录》</a></router-link></div>
@@ -89,6 +139,18 @@
                 strength1:0,
                 strength2:0,
                 strength3:0,
+
+                imgs: [],
+                fileList: [], //缓存区文件
+                formData: new FormData(),
+                AuthenticationForm:{
+                    cellphone:'',
+                },
+                clientFormVisible: false,
+                dialogImageUrl: '',
+                dialogVisible: false,
+
+
                 form: {
                     email: '',
                     telephone:'',
@@ -131,6 +193,9 @@
                     this.strength3=0
                 }
             },
+            verification(){
+                this.clientFormVisible=true
+            },
 
             //请求数据
             async getverification(){
@@ -161,7 +226,39 @@
                         type:'warning'
                     })
                 }
-            }
+            },
+
+            //实名认证
+            async reservation() {
+                this.clientFormVisible = false;
+                this.$refs.uploada.uploadFiles.forEach(ev => {
+                    this.formData.append("positive", ev.raw);
+                });
+                // 把form表单的数据加入到FormData中
+                Object.keys(this.AuthenticationForm).forEach(ele => {
+                    this.formData.append(ele, this.AuthenticationForm[ele]);
+                });
+                console.log(this.formData);
+
+                const res = await this.$axios.post("/user/authentication", this.formData, {
+                    methods: "post",
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
+                });
+                if (res.data.status === '201') {
+                    // 1.提示成功
+                    this.$message.success(res.data.message);
+                    this.$router.push('/Login')
+                } else {
+                    this.$message.warning(res.data.message);
+                }
+                this.formData=new FormData()
+                this.AuthenticationForm= {
+                    cellphone: ''
+                };
+                this.fileList=[];
+            },
         }
     }
 </script>
@@ -175,7 +272,7 @@
     .welcome{
         width: 78%;
         margin: auto;
-        font-size: 3em;
+        font-size: 30px;
         padding: 10px 0 10px 0;
         color: #efcd7e;
     }
@@ -192,13 +289,13 @@
     }
     .user-title{
         margin-bottom: 3%;
-        font-size: 2.5em;
+        font-size: 25px;
     }
     .remember{
         margin-bottom: 3%;
     }
     .log-button{
-        margin-bottom: 10%;
+        margin:0 1% 4% 0;
     }
     .password-safe{
         width: 40%;
@@ -222,7 +319,7 @@
         padding:3% 0 0 3%;
     }
     .vip-title{
-        font-size: 1.4em;
+        font-size: 14px;
         padding-bottom: 3%;
     }
     .vip-title a{
@@ -232,7 +329,7 @@
         position: relative;
     }
     .active-topic span{
-        font-size: 1.4em;
+        font-size: 14px;
         color: #eeb757;
         position: absolute;
         bottom: 8%;

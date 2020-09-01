@@ -169,7 +169,6 @@
                     });
                 } else {
                     this.clientFormVisible = true;
-                    console.log(real)
                 }
             },
             getDetails(ev){
@@ -338,7 +337,7 @@
         float: right;
         width: 45%;
         height: 100%;
-        font-size: 20px;
+        font-size: 2em;
     }
     .rightdiv h1 {
         margin-bottom: 20px;
@@ -350,7 +349,9 @@
     .leftdiv {
         float: left;
         width: 50%;
+        height: 405px;
         padding:3% 0 0 1%;
+        overflow: hidden;
     }
     .leftdiv img{
         width: 100%;
@@ -375,7 +376,7 @@
     }
     .item-top{
         width: 100%;
-        height: 274px;
+        height: 240px;
         overflow: hidden;
     }
     .item-bottom{
@@ -383,14 +384,14 @@
         position: relative;
     }
     .item-bottom h3{
-        font-size: 16px;
+        font-size: 1.6em;
         color: #1b2939;
     }
     .item-bottom h3:hover{
         color: #1890ff;
     }
     .item-bottom p{
-        font-size: 14px;
+        font-size: 1.4em;
         color: #939a9f;
     }
     .part{

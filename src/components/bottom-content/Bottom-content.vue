@@ -6,7 +6,7 @@
                     <span>用户帮助</span>
                     <p><a href="#">入住指南</a></p>
                     <p><a href="#">生活常识</a></p>
-                    <p><a href="#">租房问题</a></p>
+                    <p><a href="#">租车问题</a></p>
                 </div>
                 <div class="website-f-list">
                     <span>商务合作</span>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="website-f-list">
                     <span>客服热线</span>
-                    <p>4001-616-6666</p>
+                    <p>400-0820-8820</p>
                 </div>
                 <div class="website-f-right">
                     <div class="weChat">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="team">
                         <span>研发团队: 可口可乐</span>
-                        <p>成员:任俊燊 余俊 朱飞 王乙博 杜虹铮 禹毅杰</p>
+                        <p>成员:任俊燊 余骏 朱飞 王乙博 杜虹铮 禹毅杰</p>
                     </div>
                 </div>
             </div>
