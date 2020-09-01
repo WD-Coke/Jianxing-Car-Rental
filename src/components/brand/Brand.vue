@@ -55,7 +55,7 @@
         float: left;
         text-align: center;
         padding-top: 20px;
-        font-size: 1.4em;
+        font-size: 14px;
         border-left: 1px solid rgba(200,200,200,0.5);
     }
     .jx-main img{

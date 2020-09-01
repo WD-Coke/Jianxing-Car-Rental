@@ -51,12 +51,12 @@ export default {
     };
   },
   mounted() {
-    this.currentIndex = localStorage.getItem("index");
+    this.currentIndex = sessionStorage.getItem("index");
   },
   methods: {
     inShow(index) {
-      localStorage.setItem("index", index);
-      this.currentIndex = localStorage.getItem("index");
+      sessionStorage.setItem("index", index);
+      this.currentIndex = sessionStorage.getItem("index");
       if (index === 0) {
         this.$router.push("/HomePage");
       } else if (index === 1) {
@@ -83,7 +83,7 @@ export default {
       }
     },
     invisble() {
-      localStorage.removeItem("index");
+      sessionStorage.removeItem("index");
       this.currentIndex = 99;
     },
     clear() {
@@ -131,7 +131,7 @@ export default {
 }
 .tap-left span {
   align-self: center;
-  font-size: 1.2rem;
+  font-size: 14px;
   cursor: pointer;
 }
 .tap-left span:hover {
@@ -147,7 +147,7 @@ export default {
   color: white;
   flex: 1;
   padding-left: 15%;
-  font-size: 1.2rem;
+  font-size: 14px;
   display: flex;
 }
 .right-content {

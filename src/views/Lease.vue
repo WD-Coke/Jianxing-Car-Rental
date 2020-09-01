@@ -91,13 +91,13 @@
         data() {
             return {
                 form: {
-                    city:'遵义',
+                    city:'重庆',
                     sid:'',
                     brand:'',
                     date1:'',
                     date2:''
                 },
-                citys:['遵义','重庆','广州','上海','北京','天津','深圳','杭州','成都','长沙','大连','三亚','济南','武汉','西安'],
+                citys:['重庆','遵义','广州','上海','北京','天津','深圳','杭州','成都','长沙','大连','三亚','济南','武汉','西安'],
                 store:[],
                 brand:['保时捷','宝马','奥迪','福特','比亚迪','帕萨特','路虎','捷豹','沃尔沃','奔驰','大众','玛莎拉蒂'],
                 cars:[],
@@ -157,11 +157,11 @@
         border-bottom: 1px solid rgba(200,200,200,0.3);
     }
     .form-title li{
-        font-size: 1.5em;
+        font-size: 15px;
         margin-bottom: 3%;
     }
     .form-title span{
-        font-size: 1em;
+        font-size: 10px;
         color: #8a8a8a;
     }
     .lease-form{
@@ -210,27 +210,28 @@
     }
     .item-top{
         width: 100%;
-        height: 274px;
+        height: 240px;
         overflow: hidden;
     }
     .item-bottom{
-        padding-left: 5%;
+        padding:0 0 5% 5%;
         position: relative;
     }
     .item-bottom h3{
-        font-size: 1.6em;
+        font-size: 16px;
         color: #1b2939;
     }
     .item-bottom h3:hover{
         color: #1890ff;
     }
     .item-bottom p{
-        font-size: 1.4em;
+        font-size: 14px;
         color: #939a9f;
+        margin-bottom: 1%;
     }
     .part{
         position: absolute;
-        bottom: 5%;
+        bottom: 12%;
         right: 5%;
     }
     .car-item img{

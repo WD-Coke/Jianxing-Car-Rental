@@ -175,11 +175,12 @@ export default {
       inputId:'',
       carDetails: {},
       imgs: [],
+      price:''
     };
   },
   computed: {
     allprise: function() {
-      return this.daynum * this.carDetails.cprice;
+      return this.price=this.daynum * this.carDetails.cprice;
     }
   },
   created() {
@@ -209,11 +210,12 @@ export default {
         qs.stringify({
           account: localStorage.getItem("account"),
           cid: this.carDetails.cid,
-          price: this.carDetails.price,
+          came:this.carDetails.cname,
+          price: this.price,
           days: this.daynum,
           username: this.inputname,
           cellphone: this.inputphone,
-          idnumber:this.inputId
+          idnumber:this.inputId,
         }),
         {
           headers: {
@@ -348,7 +350,7 @@ em {
 }
 .room-price-sale {
   display: block;
-  margin: 0 0 0 85px;
+  margin: 0 ;
 }
 .room-price-sale {
   color: #ff7966;
@@ -382,6 +384,7 @@ em {
 }
 .rightdiv h1 {
   margin-bottom: 20px;
+  margin-top: 0;
 }
 .roomall {
   width: 80%;

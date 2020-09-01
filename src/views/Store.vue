@@ -3,7 +3,7 @@
     <div class="mapleft">
       <div v-for="(item,index) in storelist" :key="index" @click="btnStore(index)">
         <img :src="item.mainpic" alt="123" width="50%" height="90px" />
-        <div>
+        <div class="left-bar">
           <h2 class="h2">{{item.sname}}</h2>
           <span>营业时间：{{item.workdate}}</span>
           <br />
@@ -72,9 +72,9 @@ export default {
 
         marker.on("click", function () {
           this.content =
-            '<div class="info-title">' +
+            '<div class="info-title" style="font-size: 13px">' +
             _this.storelist[i].sname +
-            '</div><div class="info-content">' +
+            '</div><div class="info-content" style="font-size: 12px">' +
             "<img src=" +
             _this.storelist[i].mainpic +
             ' width=100px height=60px style="margin-right:10px">' +
@@ -99,9 +99,17 @@ export default {
 };
 </script>
 
+<!--<style src="../assets/css/API.css" scoped></style>-->
 <style>
+  .left-bar span{
+    font-size: 12px;
+    display: inline-block;
+    line-height: 1;
+    font-weight: 100;
+  }
 .h2 {
   margin-top: 0;
+  font-size: 18px;
 }
 .mapleft > div > div {
   width: 45%;
@@ -150,7 +158,7 @@ export default {
 
 .info-title {
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   background-color: #25a5f7;
   line-height: 26px;
   padding: 0px 0 0 6px;
@@ -174,4 +182,27 @@ export default {
   height: 25px;
   border-radius: 2px 0 0 2px;
 }
+
+
+
+  .info-title {
+    color: white;
+    font-size: 12px;
+    background-color: #25a5f7;
+    line-height: 26px;
+    padding: 0px 0 0 6px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+  }
+
+  .info-content {
+    font: 12px Helvetica, "Hiragino Sans GB", "Microsoft Yahei", "微软雅黑", Arial;
+    padding: 4px;
+    color: #666666;
+    line-height: 23px;
+  }
+/*
+高德
+ */
+
 </style>

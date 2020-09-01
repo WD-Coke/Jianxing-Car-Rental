@@ -279,11 +279,11 @@
         padding: 3% 0 0 3%;
     }
     .item-right h3{
-        font-size: 2.4em;
+        font-size: 24px;
         color: #1b2939;
     }
     .item-right p{
-        font-size: 1.6em;
+        font-size: 16px;
         color: #939a9f;
     }
     .activing{
@@ -321,11 +321,11 @@
         padding-left: 5%;
     }
     .item-bottom h3{
-        font-size: 1.6em;
+        font-size: 16px;
         color: #1b2939;
     }
     .item-bottom p{
-        font-size: 1.4em;
+        font-size: 14px;
         color: #939a9f;
     }
     .list-item img{
