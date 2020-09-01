@@ -4,7 +4,7 @@
       <div v-for="(item,index) in storelist" :key="index" @click="btnStore(index)">
         <img :src="item.mainpic" alt="123" width="50%" height="90px" />
         <div>
-          <h2>{{item.sname}}</h2>
+          <h2 class="h2">{{item.sname}}</h2>
           <span>营业时间：{{item.workdate}}</span>
           <br />
           <span>地址：{{item.slocation}}</span>
@@ -77,9 +77,11 @@ export default {
             '</div><div class="info-content">' +
             "<img src=" +
             _this.storelist[i].mainpic +
-            ' width=100px height=50px>' +
+            ' width=100px height=60px style="margin-right:10px">' +
             _this.storelist[i].slocation +
-            '<br/>' +
+            '<br/>营业时间：' +
+            _this.storelist[i].workdate +
+            '<br/>'+
             '<a href = "https://mobile.amap.com/">了解商家详情</a></div>';
           var infowindow = new AMap.AdvancedInfoWindow({
             content: this.content,
@@ -98,6 +100,9 @@ export default {
 </script>
 
 <style>
+.h2 {
+  margin-top: 0;
+}
 .mapleft > div > div {
   width: 45%;
   display: inline-block;
