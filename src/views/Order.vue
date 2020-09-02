@@ -155,13 +155,22 @@
             async addActive(index){
                 this.activeIndex=index;
                 this.account=localStorage.getItem('account')
-                const res=await this.$axios.get( '/order/getkindsorder',{params:
-                        {
-                            account:this.account,
-                            state:index-1
-                        }
-                });
-                this.tableData=res.data.data
+                if (index>=1){
+                    const res=await this.$axios.get( '/order/getkindsorder',{params:
+                            {
+                                account:this.account,
+                                state:index-1
+                            }
+                    });
+                    this.tableData=res.data.data
+                }else if (index===0){
+                    const res=await this.$axios.get( '/order/getkindsorder',{params:
+                            {
+                                account:this.account,
+                            }
+                    });
+                    this.tableData=res.data.data
+                }
             },
             cancel(ev){
                 this.centerDialog=true

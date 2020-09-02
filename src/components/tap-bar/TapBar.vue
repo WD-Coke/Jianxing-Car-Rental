@@ -90,6 +90,8 @@ export default {
       localStorage.removeItem("token");
       localStorage.removeItem("display");
       this.display = true;
+      this.currentIndex=0;
+      this.$router.push('/Homepage')
     },
   },
   created() {
