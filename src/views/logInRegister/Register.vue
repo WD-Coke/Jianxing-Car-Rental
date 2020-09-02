@@ -208,6 +208,17 @@
                     cellphone:this.form.telephone
                 }));
                 console.log(res)
+                if (res.data.status==='201'){
+                    this.$message({
+                        message:'发送成功',
+                        type:'success'
+                    })
+                }else {
+                    this.$message({
+                        message:res.data.message,
+                        type:'warning'
+                    })
+                }
             },
             async UserRegistration(){
                 const res=await this.$axios.post('/user/register',qs.stringify({
