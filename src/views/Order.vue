@@ -164,7 +164,7 @@
                     });
                     this.tableData=res.data.data
                 }else if (index===0){
-                    const res=await this.$axios.get( '/order/getkindsorder',{params:
+                    const res=await this.$axios.get( '/order/getallorder',{params:
                             {
                                 account:this.account,
                             }
