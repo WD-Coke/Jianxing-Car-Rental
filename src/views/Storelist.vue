@@ -69,9 +69,9 @@
                 </div>
             </div>
         </div>
-        <!-- 入住人弹框 -->
+        <!-- 车辆弹框 -->
         <el-dialog
-                title="入住人信息"
+                title="车辆信息"
                 :visible.sync="clientFormVisible"
                 center
                 width="450px"
@@ -337,7 +337,7 @@
         float: right;
         width: 45%;
         height: 100%;
-        font-size: 2em;
+        font-size: 20px;
     }
     .rightdiv h1 {
         margin-bottom: 20px;
@@ -384,14 +384,14 @@
         position: relative;
     }
     .item-bottom h3{
-        font-size: 1.6em;
+        font-size: 16px;
         color: #1b2939;
     }
     .item-bottom h3:hover{
         color: #1890ff;
     }
     .item-bottom p{
-        font-size: 1.4em;
+        font-size: 14px;
         color: #939a9f;
     }
     .part{

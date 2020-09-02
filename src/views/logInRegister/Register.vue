@@ -218,8 +218,7 @@
                         message:res.data.message,
                         type:'success'
                     })
-                    console.log(res)
-                    this.$router.push('/Login')
+                    this.clientFormVisible=true
                 }else if(res.data.status==='422'){
                     this.$message({
                         message:res.data.message,

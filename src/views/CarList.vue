@@ -54,22 +54,22 @@
               <span>车牌号：{{ carDetails.license }}</span>
             </div>
             <div>
-              <span>最短出租时间：{{ carDetails.minday }}</span>
+              <span>出租时间：{{ carDetails.getdate|fmtdata }}</span>
             </div>
             <div>
-              <span>最长出租时间：{{ carDetails.maxday }}</span>
+              <span>到期时间：{{ carDetails.insertdate|fmtdata }}</span>
             </div>
             <div>
-              <span>座椅：{{ carDetails.sets }}位</span>
+              <span>颜色：{{ carDetails.color }}</span>
             </div>
               <div>
-                  <span>油型：#{{ carDetails.power}}</span>
+                  <span>排量：{{ carDetails.cdisplacement}}</span>
               </div>
               <div>
                   <span>提前预定：2-4小时</span>
               </div>
             <div>
-              <span>邮箱容量：{{ carDetails.volume}}L</span>
+              <span>类别：{{ carDetails.ctype}}</span>
             </div>
             <div>
               <span>用车规则：{{ carDetails.roles }}</span>
@@ -150,6 +150,22 @@
                   clearable
           ></el-input>
         </el-form-item>
+        <el-form-item label="租用日期">
+          <el-date-picker
+                  value-format="yyyy/MM/dd"
+                  type="date"
+                  placeholder="选择日期"
+                  v-model="date"
+                  style="width: 100%;"
+          ></el-date-picker>
+        </el-form-item>
+        <el-form-item label="租用天数">
+          <el-input
+                  placeholder="请输入租用天数"
+                  v-model="daynum"
+                  clearable
+          ></el-input>
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="clientFormVisible = false">取消</el-button>
@@ -169,13 +185,14 @@ export default {
   data() {
     return {
       clientFormVisible: false,
+      imgs: [],
       daynum: 1,
       inputname: "",
       inputphone: "",
       inputId:'',
       carDetails: {},
-      imgs: [],
-      price:''
+      price:'',
+      date:'',
     };
   },
   computed: {
@@ -211,7 +228,6 @@ export default {
     // 预定车辆
     async reservation() {
       this.clientFormVisible = false;
-        console.log(localStorage.getItem('account'))
       const res = await this.$axios.put(
         "/order/createorder",
         qs.stringify({
@@ -223,6 +239,7 @@ export default {
           username: this.inputname,
           cellphone: this.inputphone,
           idnumber:this.inputId,
+          renttime:this.date
         }),
         {
           headers: {
@@ -237,6 +254,13 @@ export default {
           type: "success",
           duration: 1000
         });
+        this.daynum=1;
+        this.inputname= "";
+        this.inputphone= "";
+        this.inputId='';
+        this.carDetails= {};
+        this.price='';
+        this.date=''
       }
     },
     //展示信息

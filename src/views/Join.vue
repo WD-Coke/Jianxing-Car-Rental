@@ -29,11 +29,11 @@
                                 :file-list="fileList"
                                 list-type="picture"
                                 :auto-upload="false"
-                                ref="uploada"
+                                ref="uploada1"
                                 style="width: 40%">
                             <el-button size="small" type="primary">点击上传</el-button>
                             <div slot="tip" class="el-upload__tip">
-                                请上传店铺照片/不得多于4张
+                                请上传店铺照片和营业执照
                             </div>
                         </el-upload>
                     </el-form-item>
@@ -45,7 +45,7 @@
                                 :file-list="fileList2"
                                 list-type="picture"
                                 :auto-upload="false"
-                                ref="uploada"
+                                ref="uploada2"
                                 style="width: 40%">
                             <el-button size="small" type="primary">点击上传</el-button>
                             <div slot="tip" class="el-upload__tip">
@@ -93,18 +93,24 @@
         methods:{
             async submitData() {
                 // 添加当前剩余图片文件
-                this.$refs.uploada.uploadFiles.forEach(ev => {
+                // this.formData.append("photo", this.$refs.uploada.uploadFiles[0]);
+                // this.formData.append("zhizhao", this.$refs.uploada.uploadFiles[1]);
+                // console.log(this.$refs.uploada.uploadFiles[0])
+                // console.log(this.$refs.uploada.uploadFiles[1])
+                this.$refs.uploada1.uploadFiles.forEach(ev => {
                     this.formData.append("photo", ev.raw);
                 });
-                this.$refs.uploada.uploadFiles.forEach(ev => {
+                this.$refs.uploada2.uploadFiles.forEach(ev => {
                     this.formData.append("zhizhao", ev.raw);
                 });
+                console.log(this.$refs.uploada1.uploadFiles)
+                console.log(this.$refs.uploada2.uploadFiles)
                 // 把form表单的数据加入到FormData中
                 Object.keys(this.form).forEach(ele => {
                     this.formData.append(ele, this.form[ele]);
                 });
-                console.log(this.formData);
-
+                console.log(this.formData.get('zhizhao'));
+                console.log(this.formData.get('photo'));
                 const res = await this.$axios.post("/store/register", this.formData, {
                     methods: "post",
                     headers: {

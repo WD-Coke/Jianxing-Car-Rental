@@ -116,9 +116,11 @@
             },
             handleCurrentChange(ev) {
                 this.currentPage = ev;
+                console.log(this.currentPage)
                 this.searchCar({
                     city:this.form.city,
                     sid:this.form.sid,
+                    pagenum:this.currentPage
                 });
             },
 
@@ -132,11 +134,12 @@
                     params:{
                             city:this.form.city,
                             sid:this.form.sid,
-                            cbrand:this.form.brand
+                            cbrand:this.form.brand,
+                            pagenum:this.currentPage
                          }
                     });
                 this.cars=res.data.data.data
-                this.size = res.data.data.size
+                this.size = res.data.data.total
                 console.log(res)
             },
         }
