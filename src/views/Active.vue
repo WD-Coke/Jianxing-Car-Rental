@@ -144,7 +144,7 @@
                                     <div class="img-cover"></div>
                                 </div>
                                 <div class="item-bottom">
-                                    <h3>神州租车新用户专享：首日0元租！</h3>
+                                    <h3>简行租车新用户专享：首日0元租！</h3>
                                     <p>安全出行，3步搞定</p>
                                     <p>
                                         <el-button type="warning" style="margin-top: 3%" size="mini">全国</el-button>
@@ -160,7 +160,7 @@
                                     <div class="img-cover"></div>
                                 </div>
                                 <div class="item-bottom">
-                                    <h3>春节用神州租车，租7天送7天！</h3>
+                                    <h3>春节用简行租车，租7天送7天！</h3>
                                     <p>安全出行，3步搞定</p>
                                     <p>
                                         <el-button type="warning" style="margin-top: 3%" size="mini">全国</el-button>

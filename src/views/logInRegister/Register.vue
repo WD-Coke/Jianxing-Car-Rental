@@ -178,7 +178,7 @@
                 if (this.form.password.length>=12){
                     this.strength1=1
                     this.strength2=1
-                    this.strength3=0
+                    this.strength3=1
                 }else if(this.form.password.length>=9){
                     this.strength1=1
                     this.strength2=1

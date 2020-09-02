@@ -411,10 +411,10 @@ export default {
     float: right;
     width: 45%;
     height: 100%;
-    font-size: 2em;
+    font-size: 20px;
   }
   .rightdiv h1 {
-    margin-bottom: 20px;
+    margin:20px 0 20px 0;
   }
   .roomall {
     width: 80%;
