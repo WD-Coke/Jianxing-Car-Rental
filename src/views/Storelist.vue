@@ -37,7 +37,7 @@
                             <span>联系电话：{{ storeDetails.sphone }}</span>
                         </div>
                         <div>
-                            <span>门店邮箱：{{ storeDetails.email }}</span>
+                            <span>门店邮箱：{{ storeDetails.semail }}</span>
                         </div>
                         <div>
                             <span>到期时间：{{ storeDetails.dateline|fmtdata}}</span>
@@ -62,7 +62,7 @@
                             <h3>{{item.cname}}</h3>
                             <p>781 2.0T</p>
                             <p>安全出行，3步搞定</p>
-                            <p style="color: #ff4d3b">908元/天</p>
+                            <p style="color: #ff4d3b">{{item.cprice}}元/天</p>
                             <el-button type="primary" class="part" @click="getDetails(item)">查看详情</el-button>
                         </div>
                     </div>
@@ -291,7 +291,6 @@
         width: 85%;
     }
     .room-list-new div span {
-        margin-right: 20px;
         display: block;
         font-weight: 400;
         height: 40px;

@@ -75,7 +75,7 @@
               <span>用车规则：{{ carDetails.roles }}</span>
             </div>
           </div>
-          <el-button :type="color" class="btnroom" @click="client()">{{booking}}</el-button>
+          <el-button :type="color" class="btnroom" @click="client()" :disabled="bookStatus">{{booking}}</el-button>
         </div>
       </div>
       <el-divider class="easyfont">
