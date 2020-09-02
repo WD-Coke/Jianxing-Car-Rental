@@ -29,7 +29,6 @@
                     </el-form-item>
                     <el-form-item>
                         <el-upload
-                                multiple
                                 class="upload-demo"
                                 action="a"
                                 :file-list="fileList"
@@ -39,7 +38,7 @@
                                 style="width: 40%">
                             <el-button size="small" type="primary">点击上传</el-button>
                             <div slot="tip" class="el-upload__tip">
-                                请上传店铺照片和营业执照
+                                请上传店铺照片
                             </div>
                         </el-upload>
                     </el-form-item>
