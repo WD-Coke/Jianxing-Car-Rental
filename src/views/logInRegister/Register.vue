@@ -99,7 +99,7 @@
                                 </el-form-item>
                             </el-form>
                             <div slot="footer" class="dialog-footer">
-                                <el-button @click="clientFormVisible = false">取消</el-button>
+                                <el-button @click="jupm">取消</el-button>
                                 <el-button
                                         type="primary"
                                         @click="reservation()">
@@ -196,6 +196,10 @@
             verification(){
                 this.clientFormVisible=true
             },
+            jupm(){
+                this.clientFormVisible = false
+                this.$router.push('/Login')
+            },
 
             //请求数据
             async getverification(){
@@ -250,7 +254,7 @@
                     this.$message.success(res.data.message);
                     this.$router.push('/Login')
                 } else {
-                    this.$message.warning(res.data.message);
+                    this.$message.warning("认证失败");
                 }
                 this.formData=new FormData()
                 this.AuthenticationForm= {
