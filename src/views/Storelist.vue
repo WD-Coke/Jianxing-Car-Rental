@@ -31,7 +31,7 @@
                             <span>门店代表人：{{storeDetails.representative }}</span>
                         </div>
                         <div>
-                            <span>注册资金：{{ storeDetails.capital }}</span>
+                            <span>注册资金：{{ storeDetails.capital }} 万元</span>
                         </div>
                         <div>
                             <span>联系电话：{{ storeDetails.sphone }}</span>

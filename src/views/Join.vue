@@ -13,6 +13,9 @@
                         <el-input v-model="form.representative" style="width: 40%"  placeholder="联系人姓名"></el-input>
                     </el-form-item>
                     <el-form-item>
+                        <el-input v-model="form.representativeid" style="width: 40%"  placeholder="身份证号"></el-input>
+                    </el-form-item>
+                    <el-form-item>
                         <el-input v-model="form.sphone" style="width: 40%"  placeholder="联系电话"></el-input>
                     </el-form-item>
                     <el-form-item>
@@ -20,6 +23,9 @@
                     </el-form-item>
                     <el-form-item>
                         <el-input v-model="form.semail" style="width: 40%"  placeholder="公司邮箱"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-input v-model="form.capital" style="width: 40%"  placeholder="注册资金(万元)"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-upload
@@ -87,6 +93,8 @@
                     sphone:'',
                     slocation:'',
                     semail:'',
+                    representativeid:'',
+                    capital:''
                 }
             }
         },

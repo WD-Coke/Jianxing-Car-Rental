@@ -75,7 +75,7 @@
               <span>用车规则：{{ carDetails.roles }}</span>
             </div>
           </div>
-          <el-button type="primary" class="btnroom" @click="client()">立 即 预 订</el-button>
+          <el-button :type="color" class="btnroom" @click="client()">{{booking}}</el-button>
         </div>
       </div>
       <el-divider class="easyfont">
@@ -193,6 +193,9 @@ export default {
       carDetails: {},
       price:'',
       date:'',
+      booking:'立即预定',
+      bookStatus:false,
+      color:'primary',
     };
   },
   computed: {
@@ -247,8 +250,13 @@ export default {
           } // 修正中文乱码
         }
       );
+      if (res.data.data.conditon===0||res.data.data.conditon===1){
+        this.booking='已被预订';
+        this.bookStatus=true;
+        this.color='info'
+      }
       const { status, message } = res.data;
-      if (status == 200) {
+      if (status==="201") {
         this.$message({
           message: `${message}`,
           type: "success",
@@ -258,7 +266,6 @@ export default {
         this.inputname= "";
         this.inputphone= "";
         this.inputId='';
-        this.carDetails= {};
         this.price='';
         this.date=''
       }
@@ -267,7 +274,12 @@ export default {
     async getCarDetails(ev) {
       const res = await this.$axios.get(`/car/getcar/${ev.name}`);
       const { status, data, message } = res.data;
-      if (status == 200) {
+      if (res.data.data.cstatus===2){
+        this.booking='已被预订';
+        this.bookStatus=true;
+        this.color='info'
+      }
+      if (status === '200') {
         this.$message({
           message: `${message}`,
           type: "success",
