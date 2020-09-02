@@ -36,7 +36,7 @@
                 <div class="user" v-else>
                     <el-form :label-position="labelPosition"  :model="formLabelPhone">
                         <el-form-item prop="phone">
-                            <el-input v-model="formLabelPhone.email" prefix-icon="el-icon-user" placeholder="请输入注册邮箱"></el-input>
+                            <el-input v-model="formLabelPhone.email" prefix-icon="el-icon-user" placeholder="请输入手机号"></el-input>
                         </el-form-item>
                         <el-form-item class="inputBox" prop="verification">
                             <el-input
