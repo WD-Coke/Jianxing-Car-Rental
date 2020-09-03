@@ -43,9 +43,10 @@
                                     v-model="formLabelPhone.verification"
                                     prefix-icon="el-icon-message"
                                     placeholder="请输入动态验证码"
-                                    style="width: 60%">
+                                    style="width: 55%">
                             </el-input>
-                            <el-button type="primary" plain style="width: 40%" @click="getVerification">发送验证码</el-button>
+                            <el-button type="primary" v-show="show" plain style="margin:0;width: 45%" @click="getVerification">发送验证码</el-button>
+                            <el-button type="info" v-show="!show" plain style="margin:0;width: 45%" :disabled="point">重新发送({{count}}秒)</el-button>
                         </el-form-item>
                     </el-form>
                     <div class="remember">
@@ -89,6 +90,11 @@
                 inShow:true,
                 currentIndex:1,
                 checked:true,
+                //计时器
+                show: true,
+                count: '',
+                timer: null,
+                point:true
             }
         },
         methods:{
@@ -103,6 +109,10 @@
             registerConfirm(){
                 this.$router.push('/Register')
             },
+            //计时器
+            // getCode(){
+            //
+            // },
 
             //请求数据
             async loginConfirm(ev1,ev2){
@@ -140,6 +150,34 @@
                     cellphone: this.formLabelPhone.email,
                 }));
                 console.log(res)
+                if (res.data.status==='201'){
+                    const TIME_COUNT = 60;
+                    if (!this.timer) {
+                        this.$message({
+                            message:res.data.message,
+                            type:'success'
+                        })
+                        this.count = TIME_COUNT;
+                        this.show = false;
+                        this.timer = setInterval(() => {
+                            if (this.count > 0 && this.count <= TIME_COUNT) {
+                                this.count--;
+                            } else {
+                                this.show = true;
+                                clearInterval(this.timer);
+                                this.timer = null;
+                                this.point=false;
+                            }
+                        }, 1000)
+                    }
+                }else if (res.data.status==='422'){
+                    this.$message({
+                        message:res.data.message,
+                        type:'warning'
+                    })
+                }else {
+                    this.$message('发送失败')
+                }
             },
 
             //验证码登录

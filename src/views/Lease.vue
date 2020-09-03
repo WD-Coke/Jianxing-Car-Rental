@@ -22,13 +22,12 @@
                             </el-select>
                         </el-form-item>
                         <el-form-item label="门店">
-                            <el-select v-model="form.sid" placeholder="请选择门店" style="width: 100%">
-                                <el-option label="" value=""></el-option>
+                            <el-select v-model="form.sid" placeholder="请选择门店" style="width: 100%" clearable>
                                 <el-option :label="item.sname" :value="item.sid" v-for="item in store" :key="item">{{item.sname}}</el-option>
                             </el-select>
                         </el-form-item>
                         <el-form-item label="车型">
-                            <el-select v-model="form.brand" placeholder="请选择车型" style="width: 100%">
+                            <el-select v-model="form.brand" placeholder="请选择车型" style="width: 100%" clearable>
                                 <el-option :label="item" :value="item" v-for="item in brand" :key="item">{{item}}</el-option>
                             </el-select>
                         </el-form-item>

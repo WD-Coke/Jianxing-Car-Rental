@@ -27,7 +27,8 @@
                                         placeholder="请输入动态验证码"
                                         style="width: 30%">
                                 </el-input>
-                                <el-button type="primary" plain style="width: 20%" @click="getverification">发送验证码</el-button>
+                                <el-button type="primary" v-show="show" plain style="width: 20%" @click="getverification">发送验证码</el-button>
+                                <el-button type="info" v-show="!show" plain style="width: 20%;margin: 0" :disabled="point">重新发送({{count}}秒)</el-button>
                             </el-form-item>
                             <el-form-item class="inputBox" prop="password">
                                 <el-input
@@ -149,7 +150,11 @@
                 clientFormVisible: false,
                 dialogImageUrl: '',
                 dialogVisible: false,
-
+                //计时器
+                show: true,
+                count: '',
+                timer: null,
+                point:true,
 
                 form: {
                     email: '',
@@ -209,15 +214,30 @@
                 }));
                 console.log(res)
                 if (res.data.status==='201'){
+                    const TIME_COUNT = 60;
                     this.$message({
                         message:'发送成功',
                         type:'success'
                     })
-                }else {
+                    this.count = TIME_COUNT;
+                    this.show = false;
+                    this.timer = setInterval(() => {
+                        if (this.count > 0 && this.count <= TIME_COUNT) {
+                            this.count--;
+                        } else {
+                            this.show = true;
+                            clearInterval(this.timer);
+                            this.timer = null;
+                            this.point=false;
+                        }
+                    }, 1000)
+                }else if (res.data.status==='422'){
                     this.$message({
                         message:res.data.message,
                         type:'warning'
                     })
+                }else {
+                    this.$message('发送失败')
                 }
             },
             async UserRegistration(){
