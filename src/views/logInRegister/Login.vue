@@ -195,6 +195,7 @@
                     localStorage.setItem('token',res.data.token);
                     localStorage.setItem('display','false');
                     localStorage.setItem('account',res.data.data.account);
+                    localStorage.setItem('real',res.data.real)
                     this.$router.push('/Homepage')
                     location.reload()
                 }else if (res.data.status==='401') {
